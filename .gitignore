@@ -1,0 +1,22 @@
+# Xcode
+DerivedData/
+*.xcuserstate
+xcuserdata/
+.build/
+.swiftpm/
+
+# macOS
+.DS_Store
+
+# Website
+website/node_modules/
+website/dist/
+website/.astro/
+
+# Vercel
+website/.vercel/
+.vercel/
+
+# Env
+.env
+.env.*

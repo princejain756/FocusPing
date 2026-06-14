@@ -1,0 +1,63 @@
+---
+---
+
+<section class="problem section" id="problem">
+  <div class="container">
+    <p class="eyebrow">The real problem</p>
+    <h2>Planners remind you on a schedule. Your brain doesn't run on one.</h2>
+    <div class="problem__grid">
+      <article class="problem__card">
+        <h3>Hyperfocus hits</h3>
+        <p>Reminders fire at 9am while you're deep in flow. You can't act — but the app already marked you "late."</p>
+      </article>
+      <article class="problem__card">
+        <h3>Midnight erasure</h3>
+        <p>Tasks vanish at midnight instead of waiting patiently. Missed once, gone forever — and the guilt sticks.</p>
+      </article>
+      <article class="problem__card">
+        <h3>Red badges</h3>
+        <p>Overdue counters and streaks feel punishing, not supportive. ADHD brains need delivery, not discipline theater.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .problem {
+    background: var(--bg-elevated);
+    border-block: 1px solid var(--border);
+  }
+
+  .problem h2 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    max-width: 22ch;
+    margin: 0 0 2.5rem;
+  }
+
+  .problem__grid {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+
+  .problem__card {
+    padding: 1.75rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+
+  .problem__card h3 {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem;
+    color: var(--accent);
+  }
+
+  .problem__card p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.98rem;
+  }
+</style>

@@ -1,0 +1,45 @@
+---
+const shots = [
+  { src: '/screenshots/home.png', caption: 'Wrong-time notifications stop here' },
+  { src: '/screenshots/queue.png', caption: 'Hold pings during Focus & Deep Work' },
+  { src: '/screenshots/settings.png', caption: "I'm ready — deliver when you can act" },
+  { src: '/screenshots/onboarding.png', caption: 'Queue waits patiently. Nothing turns red.' },
+];
+---
+
+<section class="screenshots section" id="screenshots">
+  <div class="container">
+    <p class="eyebrow">In the app</p>
+    <h2>Calm by design. Captured from the iOS simulator.</h2>
+    <div class="screenshot-grid">
+      {shots.map((shot) => (
+        <figure class="screenshot-item">
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <img
+                src={shot.src}
+                alt={shot.caption}
+                width="240"
+                height="520"
+                loading="lazy"
+              />
+            </div>
+          </div>
+          <figcaption class="screenshot-caption">{shot.caption}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .screenshots {
+    background: var(--bg-elevated);
+    border-block: 1px solid var(--border);
+  }
+
+  .screenshots h2 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    margin: 0 0 2.5rem;
+  }
+</style>

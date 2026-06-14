@@ -1,0 +1,85 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <img src="/app-icon.png" alt="" width="32" height="32" />
+      <span>FocusPing</span>
+      <p class="footer__tagline">A delivery gate for ADHD adults.</p>
+    </div>
+    <nav class="footer__links" aria-label="Footer">
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/support">Support</a>
+      <a href="https://github.com/princejain756/FocusPing" rel="noopener noreferrer" target="_blank">GitHub</a>
+    </nav>
+    <p class="footer__copy">&copy; {year} FocusPing. All rights reserved.</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    padding: 3rem 0 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer__inner {
+    display: grid;
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .footer__inner {
+      grid-template-columns: 1fr auto;
+      align-items: start;
+    }
+  }
+
+  .footer__brand {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.65rem;
+  }
+
+  .footer__brand img {
+    border-radius: 8px;
+  }
+
+  .footer__brand span {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+
+  .footer__tagline {
+    width: 100%;
+    margin: 0.25rem 0 0;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+  }
+
+  .footer__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+  }
+
+  .footer__links a {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    text-decoration: none;
+  }
+
+  .footer__links a:hover {
+    color: var(--text);
+  }
+
+  .footer__copy {
+    grid-column: 1 / -1;
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+  }
+</style>

@@ -1,0 +1,132 @@
+---
+---
+
+<section class="hero section">
+  <div class="hero-glow hero-glow--warm" aria-hidden="true"></div>
+  <div class="hero-glow hero-glow--cool" aria-hidden="true"></div>
+
+  <div class="container hero__grid">
+    <div class="hero__copy">
+      <p class="eyebrow">A delivery gate for your brain</p>
+      <h1>Wrong-time notifications stop here.</h1>
+      <p class="hero__lead">
+        FocusPing holds reminders during Focus and Deep Work, then delivers them when you tap
+        <strong>I'm ready</strong> — no guilt, no streaks, no midnight vanishing tasks.
+      </p>
+      <div class="hero__actions" id="download">
+        <a href="#" class="btn btn-primary" aria-label="Download on the App Store — coming soon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.63 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+          </svg>
+          App Store — coming soon
+        </a>
+        <a href="#how" class="btn btn-ghost">See how it works</a>
+      </div>
+      <p class="hero__note">Built for ADHD adults. Not another day planner.</p>
+    </div>
+
+    <div class="hero__visual">
+      <div class="queue-viz" aria-hidden="true">
+        <div class="queue-pill"></div>
+        <div class="queue-pill"></div>
+        <div class="queue-pill"></div>
+        <p class="queue-label">3 pings waiting</p>
+      </div>
+      <div class="phone-frame">
+        <div class="phone-screen">
+          <img
+            src="/screenshots/home.png"
+            alt="FocusPing home screen showing pings and Deep Work toggle"
+            width="280"
+            height="606"
+            loading="eager"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding-top: calc(var(--nav-height) + 3rem);
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero__grid {
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  @media (min-width: 900px) {
+    .hero__grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 6vw, 3.75rem);
+    margin: 0 0 1.25rem;
+    max-width: 14ch;
+  }
+
+  .hero__lead {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    max-width: 38ch;
+    margin: 0 0 2rem;
+  }
+
+  .hero__lead strong {
+    color: var(--ready);
+    font-weight: 600;
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero__note {
+    font-size: 0.875rem;
+    color: var(--text-dim);
+    margin: 0;
+  }
+
+  .hero__visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 420px;
+  }
+
+  .queue-viz {
+    position: absolute;
+    left: 0;
+    top: 10%;
+    z-index: 1;
+    display: none;
+  }
+
+  @media (min-width: 900px) {
+    .queue-viz {
+      display: flex;
+    }
+  }
+
+  .queue-label {
+    margin: 0.5rem 0 0;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    text-align: center;
+  }
+</style>

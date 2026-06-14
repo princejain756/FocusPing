@@ -1,0 +1,106 @@
+---
+const steps = [
+  {
+    num: '01',
+    title: 'Add a ping',
+    body: 'Quick templates for meds, water, messages — or import from Apple Reminders. Siri works too.',
+    color: 'accent',
+  },
+  {
+    num: '02',
+    title: 'Focus holds delivery',
+    body: 'System Focus or Deep Work mode queues pings. No wrong-time interruptions while you work.',
+    color: 'deep',
+  },
+  {
+    num: '03',
+    title: "Tap I'm ready",
+    body: 'When you have capacity to act, one tap delivers everything waiting. You choose the moment.',
+    color: 'ready',
+  },
+];
+---
+
+<section class="how section" id="how">
+  <div class="container">
+    <p class="eyebrow">How it works</p>
+    <h2>Three steps. No schedule to maintain.</h2>
+    <ol class="how__steps">
+      {steps.map((step) => (
+        <li class={`how__step how__step--${step.color}`}>
+          <span class="how__num" aria-hidden="true">{step.num}</span>
+          <div>
+            <h3>{step.title}</h3>
+            <p>{step.body}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .how h2 {
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    margin: 0 0 2.5rem;
+  }
+
+  .how__steps {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .how__steps {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .how__step {
+    padding: 2rem 1.75rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .how__step::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+  }
+
+  .how__step--accent::before { background: var(--accent); }
+  .how__step--deep::before { background: var(--deep); }
+  .how__step--ready::before { background: var(--ready); }
+
+  .how__num {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.06);
+    margin-bottom: 0.5rem;
+    line-height: 1;
+  }
+
+  .how__step h3 {
+    font-family: var(--font-body);
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem;
+  }
+
+  .how__step p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+  }
+</style>

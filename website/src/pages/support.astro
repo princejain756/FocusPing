@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const description = 'Get help with FocusPing — FAQs, troubleshooting, and contact for ADHD-friendly reminder delivery.';
+---
+
+<BaseLayout title="Support" description={description} path="/support">
+  <Nav />
+  <main class="legal container">
+    <h1>Support</h1>
+    <p class="updated">We're here to help</p>
+
+    <h2>Contact</h2>
+    <p>
+      Email <a href="mailto:support@focusping.app">support@focusping.app</a> for questions, feedback, or
+      bug reports. We typically respond within 2 business days.
+    </p>
+
+    <h2>Frequently asked questions</h2>
+
+    <h3>Why didn't my ping notify immediately?</h3>
+    <p>
+      FocusPing holds delivery during system Focus, Deep Work mode, or outside your delivery window.
+      Check the Queue tab — your ping is likely waiting safely there. Tap <strong>I'm ready</strong> when
+      you want everything delivered.
+    </p>
+
+    <h3>How is this different from Apple Reminders?</h3>
+    <p>
+      Reminders fire on a schedule. FocusPing is a delivery gate — it decides <em>when</em> to deliver
+      based on your focus state and readiness, not just the clock.
+    </p>
+
+    <h3>Does FocusPing sync with Reminders?</h3>
+    <p>
+      v1 supports one-way import only. You can pull reminders into FocusPing, but changes in FocusPing
+      do not write back to Reminders.
+    </p>
+
+    <h3>Do I need an account?</h3>
+    <p>No. FocusPing works entirely on your device with no sign-in.</p>
+
+    <h3>Widget not updating?</h3>
+    <p>
+      Ensure App Groups are enabled for both the app and widget extension in your Apple Developer settings.
+      Try opening the app once to refresh widget state.
+    </p>
+
+    <h3>Request a feature</h3>
+    <p>
+      Open an issue on
+      <a href="https://github.com/princejain756/FocusPing/issues" rel="noopener noreferrer" target="_blank">GitHub</a>
+      or email us with your idea.
+    </p>
+
+    <h2>Privacy</h2>
+    <p>
+      Read our <a href="/privacy">Privacy Policy</a> — we collect no personal data.
+    </p>
+  </main>
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,77 @@
+---
+const features = [
+  {
+    icon: '🛡️',
+    title: 'Hold during Focus',
+    body: 'Pings wait in a safe queue while system Focus or Deep Work is on. Nothing fires at the wrong time.',
+    variant: 'deep',
+  },
+  {
+    icon: '✓',
+    title: "I'm ready",
+    body: 'One tap delivers every held ping when you choose. Your capacity, your timing.',
+    variant: 'ready',
+  },
+  {
+    icon: '🌙',
+    title: 'No guilt design',
+    body: 'No red overdue badges. No streaks. Missed pings stay in queue until you release them.',
+    variant: 'accent',
+  },
+  {
+    icon: '📥',
+    title: 'Reminders import',
+    body: 'Pull tasks from Apple Reminders in one tap. Optional, on-device, no account required.',
+    variant: 'accent',
+  },
+  {
+    icon: '⏰',
+    title: 'Delivery window',
+    body: 'Set quiet hours so pings only arrive when you want them — with a visual timeline preview.',
+    variant: 'deep',
+  },
+  {
+    icon: '📱',
+    title: 'Widget & Live Activity',
+    body: 'Glance queue count from your home screen. Live Activity when pings are waiting.',
+    variant: 'ready',
+  },
+];
+---
+
+<section class="features section" id="features">
+  <div class="container">
+    <p class="eyebrow">Features</p>
+    <h2>Everything a delivery gate needs. Nothing a planner forces on you.</h2>
+    <div class="feature-grid">
+      {features.map((f) => (
+        <article class="feature-card">
+          <div class={`feature-icon feature-icon--${f.variant}`} aria-hidden="true">{f.icon}</div>
+          <h3>{f.title}</h3>
+          <p>{f.body}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .features h2 {
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    max-width: 24ch;
+    margin: 0 0 2.5rem;
+  }
+
+  .feature-card h3 {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem;
+  }
+
+  .feature-card p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+  }
+</style>
