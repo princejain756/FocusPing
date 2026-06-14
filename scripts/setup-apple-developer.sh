@@ -64,14 +64,20 @@ run fastlane produce enable_services \
   -a "$MAIN_BUNDLE" \
   -b "$TEAM_ID" \
   -u "$APPLE_ID" \
-  --app_group \
-  --focus_status
+  --app_group
 
 run fastlane produce enable_services \
   -a "$WIDGET_BUNDLE" \
   -b "$TEAM_ID" \
   -u "$APPLE_ID" \
   --app_group
+
+echo ""
+echo "NOTE: Focus Status is not available via fastlane CLI."
+echo "Enable it manually for com.focusping.app at:"
+echo "  https://developer.apple.com/account/resources/identifiers/list"
+echo "  → com.focusping.app → Capabilities → Focus Status → Save"
+echo ""
 
 echo "=== Step 5: Verify ==="
 fastlane produce available_services \
