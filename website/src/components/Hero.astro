@@ -26,22 +26,21 @@
     </div>
 
     <div class="hero__visual">
-      <div class="queue-viz" aria-hidden="true">
-        <div class="queue-pill"></div>
-        <div class="queue-pill"></div>
-        <div class="queue-pill"></div>
-        <p class="queue-label">3 pings waiting</p>
-      </div>
-      <div class="phone-frame">
-        <div class="phone-screen">
-          <img
-            src="/screenshots/home.png"
-            alt="FocusPing home screen showing pings and Deep Work toggle"
-            width="280"
-            height="606"
-            loading="eager"
-          />
+      <div class="hero__phone-stage" aria-hidden="false">
+        <div class="hero__phone-glow" aria-hidden="true"></div>
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <img
+              src="/screenshots/home.png"
+              alt="FocusPing home screen showing pings and Deep Work toggle"
+              width="280"
+              height="606"
+              loading="eager"
+              decoding="async"
+            />
+          </div>
         </div>
+        <p class="hero__phone-caption">Captured from the iOS app</p>
       </div>
     </div>
   </div>
@@ -65,7 +64,7 @@
 
   @media (min-width: 900px) {
     .hero__grid {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr minmax(260px, 1fr);
       gap: 4rem;
     }
   }
@@ -101,32 +100,47 @@
     margin: 0;
   }
 
+  /* Phone stage: glow behind, device on top — never overlap the screenshot */
   .hero__visual {
-    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 420px;
+    padding-block: 1rem;
   }
 
-  .queue-viz {
+  .hero__phone-stage {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    isolation: isolate;
+  }
+
+  .hero__phone-glow {
     position: absolute;
-    left: 0;
-    top: 10%;
+    inset: 8% 5% 18%;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(237, 107, 46, 0.22) 0%,
+      rgba(115, 97, 209, 0.08) 45%,
+      transparent 70%
+    );
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .hero__phone-stage .phone-frame {
+    position: relative;
     z-index: 1;
-    display: none;
   }
 
-  @media (min-width: 900px) {
-    .queue-viz {
-      display: flex;
-    }
-  }
-
-  .queue-label {
-    margin: 0.5rem 0 0;
+  .hero__phone-caption {
+    position: relative;
+    z-index: 1;
+    margin: 0;
     font-size: 0.8rem;
     color: var(--text-dim);
-    text-align: center;
+    letter-spacing: 0.02em;
   }
 </style>

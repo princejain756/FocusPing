@@ -200,6 +200,7 @@ h1, h2, h3 {
     0 0 0 1px rgba(255, 255, 255, 0.1),
     0 40px 80px rgba(0, 0, 0, 0.55),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
 }
 
 .phone-frame::before {
@@ -226,7 +227,7 @@ h1, h2, h3 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top;
+  object-position: top center;
 }
 
 /* Feature cards */
@@ -298,40 +299,13 @@ h1, h2, h3 {
   margin-bottom: 0.5rem;
 }
 
-/* Queue animation signature */
-.queue-viz {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 1.25rem;
-  background: var(--bg-elevated);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  min-width: 200px;
-}
-
-.queue-pill {
-  height: 36px;
-  border-radius: 10px;
-  background: linear-gradient(90deg, var(--accent-soft), transparent);
-  border: 1px solid rgba(237, 107, 46, 0.2);
-  animation: queuePulse 3s ease-in-out infinite;
-}
-
-.queue-pill:nth-child(2) { animation-delay: 0.4s; opacity: 0.7; }
-.queue-pill:nth-child(3) { animation-delay: 0.8s; opacity: 0.45; }
-
-@keyframes queuePulse {
-  0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(4px); }
-}
-
 /* Screenshot gallery */
 .screenshot-grid {
   display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  align-items: start;
+  gap: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  align-items: end;
+  justify-items: center;
 }
 
 .screenshot-item {
