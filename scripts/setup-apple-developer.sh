@@ -49,13 +49,13 @@ run fastlane produce create \
 echo "=== Step 3: Link App Group to both targets ==="
 run fastlane produce associate_group \
   -a "$MAIN_BUNDLE" \
-  -g "$APP_GROUP" \
+  "$APP_GROUP" \
   -b "$TEAM_ID" \
   -u "$APPLE_ID"
 
 run fastlane produce associate_group \
   -a "$WIDGET_BUNDLE" \
-  -g "$APP_GROUP" \
+  "$APP_GROUP" \
   -b "$TEAM_ID" \
   -u "$APPLE_ID"
 
