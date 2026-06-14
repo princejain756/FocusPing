@@ -4,6 +4,11 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 
 const description = 'Get help with FocusPing — FAQs, troubleshooting, and contact for ADHD-friendly reminder delivery.';
+
+const email = 'mail@prince.sh';
+const phoneDisplay = '80056 34678';
+const phoneTel = '+918005634678';
+const whatsapp = '918005634678';
 ---
 
 <BaseLayout title="Support" description={description} path="/support">
@@ -13,9 +18,24 @@ const description = 'Get help with FocusPing — FAQs, troubleshooting, and cont
     <p class="updated">We're here to help</p>
 
     <h2>Contact</h2>
+    <ul class="contact-list">
+      <li>
+        <strong>Email</strong> —
+        <a href={`mailto:${email}`}>{email}</a>
+      </li>
+      <li>
+        <strong>Phone</strong> —
+        <a href={`tel:${phoneTel}`}>{phoneDisplay}</a>
+      </li>
+      <li>
+        <strong>WhatsApp</strong> —
+        <a href={`https://wa.me/${whatsapp}`} rel="noopener noreferrer" target="_blank">
+          +91 {phoneDisplay}
+        </a>
+      </li>
+    </ul>
     <p>
-      Email <a href="mailto:support@focusping.app">support@focusping.app</a> for questions, feedback, or
-      bug reports. We typically respond within 2 business days.
+      Reach out for questions, feedback, or bug reports. We typically respond within 2 business days.
     </p>
 
     <h2>Frequently asked questions</h2>
@@ -52,7 +72,7 @@ const description = 'Get help with FocusPing — FAQs, troubleshooting, and cont
     <p>
       Open an issue on
       <a href="https://github.com/princejain756/FocusPing/issues" rel="noopener noreferrer" target="_blank">GitHub</a>
-      or email us with your idea.
+      or email <a href={`mailto:${email}`}>{email}</a> with your idea.
     </p>
 
     <h2>Privacy</h2>
@@ -62,3 +82,22 @@ const description = 'Get help with FocusPing — FAQs, troubleshooting, and cont
   </main>
   <Footer />
 </BaseLayout>
+
+<style>
+  .contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.25rem;
+    display: grid;
+    gap: 0.65rem;
+  }
+
+  .contact-list li {
+    color: var(--text-muted);
+  }
+
+  .contact-list strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+</style>

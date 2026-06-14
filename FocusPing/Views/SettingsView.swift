@@ -129,6 +129,12 @@ struct SettingsView: View {
                         .foregroundStyle(.secondary)
                     Link("Privacy Policy", destination: URL(string: "https://focusping.app/privacy")!)
                         .font(.footnote)
+                    Link("Support", destination: URL(string: "https://focusping.app/support")!)
+                        .font(.footnote)
+                    Link("Email support", destination: URL(string: "mailto:mail@prince.sh")!)
+                        .font(.footnote)
+                    Link("WhatsApp", destination: URL(string: "https://wa.me/918005634678")!)
+                        .font(.footnote)
                     Button("Show onboarding again") {
                         UserDefaults.standard.set(false, forKey: SettingsKey.hasCompletedOnboarding)
                         appModel.hasCompletedOnboarding = false

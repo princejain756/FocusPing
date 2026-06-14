@@ -50,6 +50,11 @@ No data collected. Reminders import is optional and on-device.
 ## Support URL
 https://focusping.app/support
 
+## Support contact
+- Email: mail@prince.sh
+- Phone: +91 80056 34678
+- WhatsApp: +91 80056 34678
+
 ## Privacy Policy URL
 https://focusping.app/privacy
 
