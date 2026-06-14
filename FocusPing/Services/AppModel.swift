@@ -33,11 +33,25 @@ final class AppModel {
         }
 
         hasCompletedOnboarding = UserDefaults.standard.bool(forKey: SettingsKey.hasCompletedOnboarding)
-        focusStatusAuthorized = await focusMonitor.requestAuthorizationIfNeeded()
-        notificationsAuthorized = await notificationService.requestAuthorization()
         loadSettings()
+        await notificationService.registerCategories()
+        await refreshAuthorizationStatus()
+        if hasCompletedOnboarding {
+            startMonitoring()
+            await refreshFocusState()
+        }
+    }
+
+    func finishOnboarding() async {
+        completeOnboarding()
+        await refreshAuthorizationStatus()
         startMonitoring()
         await refreshFocusState()
+    }
+
+    func refreshAuthorizationStatus() async {
+        notificationsAuthorized = await notificationService.isAuthorized()
+        focusStatusAuthorized = await focusMonitor.isAuthorized()
     }
 
     func completeOnboarding() {

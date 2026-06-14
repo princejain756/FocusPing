@@ -62,10 +62,6 @@ struct RootView: View {
             pingStore.refreshCounts(context: modelContext)
             await publishSurfaceState()
         }
-        .task {
-            guard MarketingScreenshotSeeder.activeScreen == nil else { return }
-            await appModel.bootstrap()
-        }
     }
 
     private var mainTabs: some View {

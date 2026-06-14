@@ -6,5 +6,7 @@
 	<array>
 		<string>group.com.focusping.shared</string>
 	</array>
+	<key>com.apple.developer.focus-status</key>
+	<true/>
 </dict>
 </plist>

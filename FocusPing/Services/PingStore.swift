@@ -49,7 +49,11 @@ final class PingStore {
             repeatDaily: repeatDaily
         )
         context.insert(ping)
-        await routePing(ping, context: context, appModel: appModel, at: dueAt ?? Date())
+        if let dueAt, dueAt > Date() {
+            await notificationService.schedulePing(ping)
+        } else {
+            await routePing(ping, context: context, appModel: appModel, at: dueAt ?? Date())
+        }
         try? context.save()
         refreshCounts(context: context)
         HapticService.success()
@@ -238,6 +242,7 @@ final class PingStore {
             enqueue(ping: ping, reason: reason, context: context)
             if advanceSchedule, let dueAt = ping.dueAt {
                 if ping.repeatDaily {
+                    await notificationService.cancelPing(ping)
                     ping.dueAt = Calendar.current.date(byAdding: .day, value: 1, to: dueAt)
                     await notificationService.schedulePing(ping)
                 } else {

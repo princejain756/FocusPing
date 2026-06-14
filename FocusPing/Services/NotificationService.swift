@@ -14,6 +14,11 @@ actor NotificationService {
         }
     }
 
+    func isAuthorized() async -> Bool {
+        let settings = await center.notificationSettings()
+        return settings.authorizationStatus == .authorized
+    }
+
     func registerCategories() async {
         let done = UNNotificationAction(
             identifier: NotificationAction.done,

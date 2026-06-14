@@ -26,6 +26,14 @@ actor FocusMonitor {
         #endif
     }
 
+    func isAuthorized() -> Bool {
+        #if canImport(FocusStatus)
+        return FocusStatusCenter.shared.authorizationStatus == .authorized
+        #else
+        return false
+        #endif
+    }
+
     func currentSnapshot() async -> FocusSnapshot {
         #if canImport(FocusStatus)
         let center = FocusStatusCenter.shared

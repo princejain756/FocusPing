@@ -162,9 +162,8 @@ struct OnboardingView: View {
             } else {
                 Button("Get started") {
                     Task {
-                        await appModel.bootstrap()
+                        await appModel.finishOnboarding()
                         HapticService.success()
-                        appModel.completeOnboarding()
                     }
                 }
                 .buttonStyle(FocusPrimaryButtonStyle())
