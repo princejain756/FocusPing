@@ -27,6 +27,7 @@ const jsonLd = {
   operatingSystem: 'iOS',
   applicationCategory: 'ProductivityApplication',
   description,
+  image: new URL('/app-icon.png', Astro.site).href,
   offers: {
     '@type': 'Offer',
     price: '0',

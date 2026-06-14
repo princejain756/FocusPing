@@ -48,7 +48,7 @@ Secondary: Health & Fitness
 No data collected. Reminders import is optional and on-device.
 
 ## Support URL
-https://www.focusping.app/support
+https://focusping.prince.sh/support
 
 ## Support contact
 - Email: mail@prince.sh
@@ -56,7 +56,7 @@ https://www.focusping.app/support
 - WhatsApp: +91 80056 34678
 
 ## Privacy Policy URL
-https://www.focusping.app/privacy
+https://focusping.prince.sh/privacy
 
 ## Screenshot captions (suggested)
 1. "Wrong-time notifications stop here"

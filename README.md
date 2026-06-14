@@ -49,9 +49,9 @@ cd website && npm run build  # production build
 ```
 
 Live URLs (after deploy):
-- https://focusping.app
-- https://focusping.app/privacy
-- https://focusping.app/support
+- https://focusping.prince.sh
+- https://focusping.prince.sh/privacy
+- https://focusping.prince.sh/support
 
 ## Open in Xcode
 
@@ -75,11 +75,11 @@ Live URLs (after deploy):
 
 Placeholder icon is installed at `FocusPing/Assets.xcassets/AppIcon.appiconset/AppIcon.png` (1024×1024).
 
-**To replace with your final logo:** drop a 1024×1024 PNG with the same filename in Xcode's AppIcon asset, and update `LaunchBrand.imageset/LaunchBrand.png` to match.
+**Logo source:** `focuspinglogo.png` at project root — synced to App Icon, LaunchBrand, and `website/public/app-icon.png`.
 
 ## Before launch
 
 - [ ] Replace placeholder icon with final logo (optional — placeholder works for TestFlight)
-- [ ] Privacy policy URL — live at focusping.app/privacy after deploy
+- [ ] Privacy policy URL — live at focusping.prince.sh/privacy after deploy
 - [ ] Development Team + App Group in Developer portal
 - [ ] Dogfood 30 days on real device

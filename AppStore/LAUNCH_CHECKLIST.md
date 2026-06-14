@@ -83,8 +83,8 @@ These cannot be done in code. **Required before TestFlight on a real device.**
 
 | # | Task | Status | Notes |
 |---|------|--------|-------|
-| 1 | **Privacy Policy URL (live)** | ❌ Placeholder | Settings links `focusping.app/privacy` — must be a real page before submission |
-| 2 | **Support URL (live)** | ❌ Placeholder | `focusping.app/support` in metadata draft |
+| 1 | **Privacy Policy URL (live)** | ⚠️ Verify | Settings links `focusping.prince.sh/privacy` |
+| 2 | **Support URL (live)** | ⚠️ Verify | `focusping.prince.sh/support` in metadata |
 | 3 | **App Store screenshots** | ❌ Not created | 6.7", 6.5", 5.5" iPhone + optional iPad. Use captions in `metadata.md` |
 | 4 | **Final app icon** | ⚠️ Placeholder OK for TestFlight | Replace `AppIcon.appiconset/AppIcon.png` when your logo is ready |
 | 5 | **App Privacy questionnaire** | ❌ Not filled | App Store Connect → App Privacy → "No data collected" (matches privacy manifest) |
@@ -105,7 +105,7 @@ These cannot be done in code. **Required before TestFlight on a real device.**
 | 2 | **Focus polled every 12s while app open** | Battery (minor) | Acceptable v1; v2 could use Focus Status notifications if Apple adds them |
 | 3 | **iPad layout unoptimized** | Looks like stretched iPhone | v1 OK; v2 split view / wider stats row |
 | 4 | **No localization** | English only | v1 OK for wedge; add later if targeting EU |
-| 5 | **share link `focusping.app`** | 404 until you own domain | Use TestFlight link for beta shares |
+| 5 | **share link** | Use `focusping.prince.sh` | Live marketing site |
 | 6 | **Widget dark mode gradient** | Hardcoded light gradient in widget | Cosmetic; update `FocusPingStatusWidget` for dark |
 | 7 | **No crash reporting** | Blind to production crashes | Optional: Xcode Organizer or Sentry post-launch |
 | 8 | **Accessibility audit** | VoiceOver / Dynamic Type edge cases | Run `swiftui-wcag-accessibility-auditor` pass on device |

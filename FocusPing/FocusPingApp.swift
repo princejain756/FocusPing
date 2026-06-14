@@ -8,13 +8,20 @@ struct FocusPingApp: App {
 
     var body: some Scene {
         WindowGroup {
-            RootView()
-                .environment(appModel)
-                .modelContainer(for: [Ping.self, QueuedDelivery.self])
-                .task {
-                    guard MarketingScreenshotSeeder.activeScreen == nil else { return }
-                    await appModel.bootstrap()
+            Group {
+                if QATestHarness.isActive {
+                    QATestRunnerView()
+                } else {
+                    RootView()
+                        .environment(appModel)
                 }
+            }
+            .modelContainer(for: [Ping.self, QueuedDelivery.self])
+            .task {
+                guard !QATestHarness.isActive, MarketingScreenshotSeeder.activeScreen == nil else { return }
+                await appModel.bootstrap()
+            }
+            .environment(appModel)
         }
     }
 }

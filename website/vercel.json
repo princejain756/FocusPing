@@ -1,13 +1,5 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "framework": "astro",
-  "redirects": [
-    {
-      "source": "/:path*",
-      "has": [{ "type": "host", "value": "focusping.app" }],
-      "destination": "https://www.focusping.app/:path*",
-      "permanent": true
-    }
-  ]
+  "framework": "astro"
 }
