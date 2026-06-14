@@ -50,8 +50,21 @@ struct RootView: View {
             }
         }
         .task {
+            if let screen = MarketingScreenshotSeeder.activeScreen {
+                MarketingScreenshotSeeder.apply(screen: screen, appModel: appModel, context: modelContext)
+                pingStore.refreshCounts(context: modelContext)
+                if let tab = appModel.screenshotInitialTab {
+                    selectedTab = tab
+                }
+                await publishSurfaceState()
+                return
+            }
             pingStore.refreshCounts(context: modelContext)
             await publishSurfaceState()
+        }
+        .task {
+            guard MarketingScreenshotSeeder.activeScreen == nil else { return }
+            await appModel.bootstrap()
         }
     }
 

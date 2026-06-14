@@ -13,12 +13,25 @@ final class AppModel {
     var useDeliveryWindow = false
     var lastQueueFlushAt: Date?
     var hasCompletedOnboarding = false
+    var screenshotInitialTab: Int?
 
     private let focusMonitor = FocusMonitor()
     private let notificationService = NotificationService.shared
     private var monitorTask: Task<Void, Never>?
 
     func bootstrap() async {
+        if let screen = MarketingScreenshotSeeder.activeScreen {
+            hasCompletedOnboarding = screen != .onboarding
+            notificationsAuthorized = screen != .onboarding
+            focusStatusAuthorized = screen != .onboarding
+            loadSettings()
+            if screen != .onboarding {
+                startMonitoring()
+                await refreshFocusState()
+            }
+            return
+        }
+
         hasCompletedOnboarding = UserDefaults.standard.bool(forKey: SettingsKey.hasCompletedOnboarding)
         focusStatusAuthorized = await focusMonitor.requestAuthorizationIfNeeded()
         notificationsAuthorized = await notificationService.requestAuthorization()

@@ -12,6 +12,7 @@ struct FocusPingApp: App {
                 .environment(appModel)
                 .modelContainer(for: [Ping.self, QueuedDelivery.self])
                 .task {
+                    guard MarketingScreenshotSeeder.activeScreen == nil else { return }
                     await appModel.bootstrap()
                 }
         }
