@@ -25,7 +25,8 @@ enum LiveActivityService {
             return
         }
 
-        if let activity = currentActivity {
+        if let activity = resolvedActivity() {
+            currentActivity = activity
             Task {
                 await activity.update(ActivityContent(state: state, staleDate: nil))
             }
@@ -45,10 +46,21 @@ enum LiveActivityService {
     }
 
     static func end() {
-        guard let activity = currentActivity else { return }
+        let activities = resolvedActivity().map { [$0] } ?? Activity<FocusPingLiveActivityAttributes>.activities
+        guard !activities.isEmpty else {
+            currentActivity = nil
+            return
+        }
         Task {
-            await activity.end(nil, dismissalPolicy: .immediate)
+            for activity in activities {
+                await activity.end(nil, dismissalPolicy: .immediate)
+            }
         }
         currentActivity = nil
+    }
+
+    private static func resolvedActivity() -> Activity<FocusPingLiveActivityAttributes>? {
+        if let currentActivity { return currentActivity }
+        return Activity<FocusPingLiveActivityAttributes>.activities.first
     }
 }

@@ -57,6 +57,15 @@ enum AppGroupStore {
 
     static func requestDeepWorkToggle(enabled: Bool) {
         defaults?.set(enabled, forKey: AppGroupConstants.deepWorkToggleKey)
+        applyDeepWorkState(enabled)
+    }
+
+    static func applyDeepWorkState(_ enabled: Bool) {
+        var snapshot = loadSnapshot()
+        snapshot.deepWorkEnabled = enabled
+        snapshot.focusLabel = enabled ? "Deep Work" : "Available"
+        snapshot.updatedAt = Date()
+        saveSnapshot(snapshot)
     }
 
     static func queueQuickPing(title: String) {

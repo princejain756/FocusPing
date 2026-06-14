@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://focusping.app',
+  site: 'https://www.focusping.app',
   integrations: [sitemap()],
   compressHTML: true,
 });

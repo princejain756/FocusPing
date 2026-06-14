@@ -114,7 +114,7 @@ struct HomeView: View {
                                 .swipeActions(edge: .trailing) {
                                     Button {
                                         HapticService.light()
-                                        Task { await pingStore.snoozePing(ping, minutes: 15, context: modelContext) }
+                                        Task { await pingStore.snoozePing(ping, minutes: 15, context: modelContext, appModel: appModel) }
                                     } label: {
                                         Label("Snooze", systemImage: "clock")
                                     }
@@ -224,7 +224,7 @@ struct HomeView: View {
     private func snoozeButton(_ ping: Ping, minutes: Int, label: String) -> some View {
         Button(label) {
             HapticService.light()
-            Task { await pingStore.snoozePing(ping, minutes: minutes, context: modelContext) }
+            Task { await pingStore.snoozePing(ping, minutes: minutes, context: modelContext, appModel: appModel) }
         }
     }
 

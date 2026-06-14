@@ -1,5 +1,6 @@
 import AppIntents
 import Foundation
+import WidgetKit
 
 struct ToggleDeepWorkIntent: AppIntent {
     static var title: LocalizedStringResource = "Toggle Deep Work"
@@ -16,6 +17,7 @@ struct ToggleDeepWorkIntent: AppIntent {
 
     func perform() async throws -> some IntentResult {
         AppGroupStore.requestDeepWorkToggle(enabled: enable)
+        WidgetCenter.shared.reloadAllTimelines()
         return .result()
     }
 }
@@ -27,6 +29,7 @@ struct EnableDeepWorkIntent: AppIntent {
 
     func perform() async throws -> some IntentResult {
         AppGroupStore.requestDeepWorkToggle(enabled: true)
+        WidgetCenter.shared.reloadAllTimelines()
         return .result()
     }
 }
@@ -38,6 +41,7 @@ struct DisableDeepWorkIntent: AppIntent {
 
     func perform() async throws -> some IntentResult {
         AppGroupStore.requestDeepWorkToggle(enabled: false)
+        WidgetCenter.shared.reloadAllTimelines()
         return .result()
     }
 }

@@ -114,7 +114,7 @@ struct SettingsView: View {
 
                 Section {
                     ShareLink(
-                        item: URL(string: "https://focusping.app")!,
+                        item: URL(string: "https://www.focusping.app")!,
                         subject: Text("FocusPing"),
                         message: Text("Wrong-time notifications stop here. FocusPing delivers reminders when you can actually act.")
                     ) {
@@ -127,9 +127,9 @@ struct SettingsView: View {
                     Text("FocusPing holds reminders while you are in Focus and delivers them when you can act. It is not another planner — it is a delivery gate for your brain.")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
-                    Link("Privacy Policy", destination: URL(string: "https://focusping.app/privacy")!)
+                    Link("Privacy Policy", destination: URL(string: "https://www.focusping.app/privacy")!)
                         .font(.footnote)
-                    Link("Support", destination: URL(string: "https://focusping.app/support")!)
+                    Link("Support", destination: URL(string: "https://www.focusping.app/support")!)
                         .font(.footnote)
                     Link("Email support", destination: URL(string: "mailto:mail@prince.sh")!)
                         .font(.footnote)

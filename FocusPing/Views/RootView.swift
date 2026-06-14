@@ -45,8 +45,30 @@ struct RootView: View {
                   let ping = pingStore.findPing(id: id, context: modelContext) else { return }
             let minutes = note.userInfo?["minutes"] as? Int ?? 15
             Task {
-                await pingStore.snoozePing(ping, minutes: minutes, context: modelContext)
+                await pingStore.snoozePing(ping, minutes: minutes, context: modelContext, appModel: appModel)
                 await publishSurfaceState()
+            }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .focusPingOpenQueue)) { _ in
+            selectedTab = 1
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .focusPingRequeueFromNotification)) { note in
+            guard let idString = note.userInfo?["pingID"] as? String,
+                  let id = UUID(uuidString: idString),
+                  let ping = pingStore.findPing(id: id, context: modelContext) else { return }
+            Task {
+                await NotificationService.shared.cancelPing(ping)
+                let hold = appModel.shouldHoldDelivery(holdDuringFocus: ping.holdDuringFocus)
+                if hold.hold, let reason = hold.reason {
+                    await pingStore.requeuePing(ping, reason: reason, context: modelContext)
+                }
+                await publishSurfaceState()
+            }
+        }
+        .onAppear {
+            DeliveryInterceptService.shared.shouldHoldDelivery = { [pingStore, modelContext, appModel] pingID in
+                guard let ping = pingStore.findPing(id: pingID, context: modelContext) else { return false }
+                return appModel.shouldHoldDelivery(holdDuringFocus: ping.holdDuringFocus).hold
             }
         }
         .task {

@@ -75,10 +75,15 @@ final class PingStore {
         await completePing(ping, context: context)
     }
 
-    func snoozePing(_ ping: Ping, minutes: Int, context: ModelContext) async {
+    func snoozePing(_ ping: Ping, minutes: Int, context: ModelContext, appModel: AppModel) async {
         ping.dueAt = Date().addingTimeInterval(TimeInterval(minutes * 60))
         removeFromQueue(pingID: ping.id, context: context)
-        await notificationService.scheduleSnooze(for: ping, minutes: minutes)
+        await notificationService.cancelPing(ping)
+        if let dueAt = ping.dueAt, dueAt > Date() {
+            await notificationService.schedulePing(ping)
+        } else {
+            await routePing(ping, context: context, appModel: appModel, at: Date())
+        }
         try? context.save()
         refreshCounts(context: context)
     }
@@ -227,7 +232,11 @@ final class PingStore {
         }
 
         let queue = (try? context.fetch(FetchDescriptor<QueuedDelivery>())) ?? []
-        await appModel.deliverQueuedItems(queue: queue, context: context, pingStore: self)
+        if !force && queue.count >= 2 {
+            await appModel.deliverQueuedSummary(queue: queue, context: context, pingStore: self)
+        } else {
+            await appModel.deliverQueuedItems(queue: queue, context: context, pingStore: self)
+        }
     }
 
     private func routePing(
@@ -265,6 +274,12 @@ final class PingStore {
                 ping.completedAt = Date()
             }
         }
+    }
+
+    func requeuePing(_ ping: Ping, reason: QueueReason, context: ModelContext) async {
+        enqueue(ping: ping, reason: reason, context: context)
+        try? context.save()
+        refreshCounts(context: context)
     }
 
     private func enqueue(ping: Ping, reason: QueueReason, context: ModelContext) {

@@ -6,7 +6,21 @@ final class NotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
         _ center: UNUserNotificationCenter,
         willPresent notification: UNNotification
     ) async -> UNNotificationPresentationOptions {
-        [.banner, .sound, .badge]
+        guard let idString = notification.request.content.userInfo["pingID"] as? String,
+              let pingID = UUID(uuidString: idString) else {
+            return [.banner, .sound, .badge]
+        }
+
+        if DeliveryInterceptService.shared.holdsDelivery(for: pingID) {
+            NotificationCenter.default.post(
+                name: .focusPingRequeueFromNotification,
+                object: nil,
+                userInfo: ["pingID": idString]
+            )
+            return []
+        }
+
+        return [.banner, .sound, .badge]
     }
 
     func userNotificationCenter(
@@ -29,6 +43,8 @@ final class NotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
                 object: nil,
                 userInfo: ["pingID": pingID, "minutes": 15]
             )
+        case UNNotificationDefaultActionIdentifier:
+            NotificationCenter.default.post(name: .focusPingOpenQueue, object: nil)
         default:
             break
         }
@@ -43,6 +59,8 @@ enum QuickAction {
 extension Notification.Name {
     static let focusPingSnoozeFromNotification = Notification.Name("focusPingSnoozeFromNotification")
     static let focusPingOpenAddPing = Notification.Name("focusPingOpenAddPing")
+    static let focusPingOpenQueue = Notification.Name("focusPingOpenQueue")
+    static let focusPingRequeueFromNotification = Notification.Name("focusPingRequeueFromNotification")
 }
 
 final class AppDelegate: NSObject, UIApplicationDelegate {

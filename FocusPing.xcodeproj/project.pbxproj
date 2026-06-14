@@ -41,6 +41,7 @@
 		C10000000000000000000010 /* HelpTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20000000000000000000009 /* HelpTipsView.swift */; };
 		C10000000000000000000011 /* StoreReviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20000000000000000000010 /* StoreReviewService.swift */; };
 		C10000000000000000000012 /* MarketingScreenshotSeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20000000000000000000011 /* MarketingScreenshotSeeder.swift */; };
+		C10000000000000000000013 /* DeliveryInterceptService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20000000000000000000012 /* DeliveryInterceptService.swift */; };
 		C10000000000000000000006 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = C20000000000000000000006 /* PrivacyInfo.xcprivacy */; };
 		B10000000000000000000001 /* FocusPingWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20000000000000000000008 /* FocusPingWidgetBundle.swift */; };
 		B10000000000000000000002 /* FocusPingStatusWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20000000000000000000009 /* FocusPingStatusWidget.swift */; };
@@ -118,6 +119,7 @@
 		C20000000000000000000009 /* HelpTipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpTipsView.swift; sourceTree = "<group>"; };
 		C20000000000000000000010 /* StoreReviewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreReviewService.swift; sourceTree = "<group>"; };
 		C20000000000000000000011 /* MarketingScreenshotSeeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketingScreenshotSeeder.swift; sourceTree = "<group>"; };
+		C20000000000000000000012 /* DeliveryInterceptService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryInterceptService.swift; sourceTree = "<group>"; };
 		B2000000000000000000000C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2000000000000000000000D /* FocusPingWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FocusPingWidget.entitlements; sourceTree = "<group>"; };
 		B30000000000000000000001 /* FocusPingWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FocusPingWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -201,6 +203,7 @@
 				C20000000000000000000003 /* BannerService.swift */,
 				C20000000000000000000010 /* StoreReviewService.swift */,
 				C20000000000000000000011 /* MarketingScreenshotSeeder.swift */,
+				C20000000000000000000012 /* DeliveryInterceptService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				C10000000000000000000010 /* HelpTipsView.swift in Sources */,
 				C10000000000000000000011 /* StoreReviewService.swift in Sources */,
 				C10000000000000000000012 /* MarketingScreenshotSeeder.swift in Sources */,
+				C10000000000000000000013 /* DeliveryInterceptService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,7 +467,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.focusping.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -491,7 +495,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.focusping.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -516,7 +520,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.focusping.app.widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -542,7 +546,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.focusping.app.widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

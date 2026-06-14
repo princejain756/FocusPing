@@ -144,4 +144,27 @@ final class AppModel {
         pingStore.refreshCounts(context: context)
         HapticService.success()
     }
+
+    func deliverQueuedSummary(
+        queue: [QueuedDelivery],
+        context: ModelContext,
+        pingStore: PingStore
+    ) async {
+        guard !queue.isEmpty else { return }
+        await notificationService.deliverQueuedSummary(count: queue.count)
+        for item in queue {
+            if let ping = pingStore.findPing(id: item.pingID, context: context) {
+                await notificationService.cancelPing(ping)
+                if ping.dueAt == nil {
+                    ping.isCompleted = true
+                    ping.completedAt = Date()
+                }
+            }
+            context.delete(item)
+        }
+        lastQueueFlushAt = Date()
+        try? context.save()
+        pingStore.refreshCounts(context: context)
+        HapticService.success()
+    }
 }
